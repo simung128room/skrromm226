@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "SKROOM226",
+  "description": "Classroom dashboard application for tracking student points and duties.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
