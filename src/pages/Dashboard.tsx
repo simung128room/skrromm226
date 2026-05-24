@@ -266,7 +266,11 @@ export default function Dashboard() {
           <div style={{position:"relative", zIndex:1}}>
           <AnimCard delay={0.12}>
             <h1 style={{color:"#fff",fontSize:24,fontWeight:800,margin:"0 0 4px",lineHeight:1.35, display: "flex", alignItems: "center", gap: 10}}>
-              <span>Hello,</span>{" "}
+              <span>{
+                new Date().getHours() < 12 ? "สวัสดีตอนเช้า," : 
+                new Date().getHours() < 16 ? "สวัสดีตอนบ่าย," : 
+                new Date().getHours() < 19 ? "สวัสดีตอนเย็น," : "สวัสดียามค่ำ,"
+              }</span>{" "}
               <div style={{display: "flex", alignItems: "center", gap: 8}}>
                  <div style={{position: "relative"}}>
                     <span>{tName}</span>
