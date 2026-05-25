@@ -11,7 +11,7 @@ export default function FormsView() {
         <AnimCard delay={0}>
             <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:12}}>
                 <div style={{width:16,height:2,background:"#3b82f6",borderRadius:2}}/>
-                <span style={{color:"#64748b",fontSize:10,letterSpacing:2}}>ศูนย์รับเรื่อง · 報告</span>
+                <span style={{color:"#64748b",fontSize:13,letterSpacing:1.5,fontWeight:600}}>ศูนย์รับเรื่อง</span>
             </div>
         </AnimCard>
         

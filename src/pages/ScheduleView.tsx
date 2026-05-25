@@ -53,7 +53,7 @@ export default function ScheduleView() {
                          <div style={{width:45,textAlign:"right",color:"#94a3b8",fontSize:10,display:"flex",flexDirection:"column",justifyContent:"center"}}>
                              <div style={{fontWeight:600}}>คาบ {p.p}</div><div>{p.time}</div>
                          </div>
-                         <div className="node-row" style={{flex:1,background:"rgba(255,255,255,0.6)",borderRadius:13,padding:"10px 14px",border:"1px dashed #cbd5e1",display:"flex",alignItems:"center",gap:8}}>
+                         <div className="node-row" style={{flex:1,background:"rgba(255,255,255,0.6)",borderRadius:13,padding:"10px 14px",border:"1px solid #e2e8f0",display:"flex",alignItems:"center",gap:8}}>
                              <Coffee size={14} color="#94a3b8" />
                              <span style={{color:"#64748b",fontSize:12,fontWeight:500}}>พักรับประทานอาหารกลางวัน</span>
                          </div>

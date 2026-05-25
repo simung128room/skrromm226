@@ -7,46 +7,39 @@ export default function Overview() {
   const { livePulse } = useOutletContext<any>();
 
   const stats = [
-    { label:"แต้มความดี", jp:"ポイント", raw:"120", prefix:"", link:"ดูแรงค์", target:"/dashboard/leaderboard", vColor:"#1a2f5e", lColor:"#2563eb", Icon:Star },
-    { label:"อันดับของฉัน", jp:"ランキング", raw:"#5", prefix:"", link:"กระดานผู้นำ", target:"/dashboard/leaderboard", vColor:"#1a2f5e", lColor:"#2563eb", Icon:Trophy },
-    { label:"สถานะเวร",  jp:"当番", raw:"รอส่ง", prefix:"",  link:"ส่งหลักฐาน",  target:"/dashboard/duty", vColor:"#d97706", lColor:"#d97706", dot:true, Icon:Sparkles },
-    { label:"การบ้าน",  jp:"宿題",   raw:"2",   prefix:"",  link:"ดูทั้งหมด", target:"/dashboard/schedule",  vColor:"#1a2f5e", lColor:"#2563eb", Icon:BookOpen },
+    { label:"Loyalty Points", raw:"120", prefix:"", link:"View Rank", target:"/dashboard/leaderboard", lColor:"#fafafa", Icon:Star },
+    { label:"My Rank", raw:"#5", prefix:"", link:"Leaderboard", target:"/dashboard/leaderboard", lColor:"#fafafa", Icon:Trophy },
+    { label:"Duty Scope",  raw:"Waiting", prefix:"",  link:"Submit Evidence",  target:"/dashboard/duty", lColor:"#f59e0b", dot:true, Icon:Sparkles },
+    { label:"Homework",  raw:"2",   prefix:"",  link:"View All", target:"/dashboard/schedule",  lColor:"#fafafa", Icon:BookOpen },
   ];
 
   return (
-    <div style={{padding:"6px 14px 14px"}}>
+    <div style={{ padding: "0 16px 16px" }}>
       <AnimCard delay={0}>
-        <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:12}}>
-          <div style={{width:16,height:2,background:"#3b82f6",borderRadius:2}}/>
-          <span style={{color:"#64748b",fontSize:10,letterSpacing:2}}>ภาพรวม · 概要</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+          <div style={{ width: 12, height: 2, background: "#fafafa", borderRadius: 2 }}/>
+          <span style={{ color: "#a1a1aa", fontSize: 11, letterSpacing: "1px", fontWeight: 600, textTransform: "uppercase" }}>Quick Stats</span>
         </div>
       </AnimCard>
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         {stats.map((s,i)=>(
-          <AnimCard key={i} delay={i*0.07} style={{borderRadius:14}}>
-            <div className="stat-card" onClick={()=>navigate(s.target)} style={{background:"#fff",borderRadius:14,padding:"14px 13px",boxShadow:"0 2px 14px rgba(26,47,94,0.07)",border:"1px solid rgba(219,234,254,0.9)",position:"relative",overflow:"hidden",cursor:"pointer"}}>
-              <div style={{position:"absolute",top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${s.lColor},${s.lColor}88)`,borderRadius:"14px 14px 0 0"}}/>
-              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:5}}>
-                <div>
-                  <div style={{color:"#94a3b8",fontSize:9,letterSpacing:1,fontFamily:"'Noto Serif JP',serif"}}>{s.jp}</div>
-                  <div style={{color:"#64748b",fontSize:10}}>{s.label}</div>
-                </div>
-                <div style={{width:28,height:28,borderRadius:8,background:`${s.lColor}15`,display:"flex",alignItems:"center",justifyContent:"center"}}>
-                  <s.Icon size={14} color={s.lColor} strokeWidth={1.5}/>
+          <AnimCard key={i} delay={i*0.1}>
+            <div className="stat-card" onClick={() => navigate(s.target)} style={{ background: "#18181b", borderRadius: 12, padding: 16, border: "1px solid #27272a", position: "relative", overflow: "hidden", cursor: "pointer", display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
+                <div style={{ color: "#a1a1aa", fontSize: 13, fontWeight: 500 }}>{s.label}</div>
+                <div style={{ width: 28, height: 28, borderRadius: 6, background: "#09090b", border: "1px solid #27272a", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <s.Icon size={14} color={s.lColor} strokeWidth={2}/>
                 </div>
               </div>
-              <div style={{fontSize:26,fontWeight:800,color:s.vColor,lineHeight:1,marginBottom:8}}>
+              <div style={{ fontSize: 24, fontWeight: 600, color: "#fafafa", lineHeight: 1, marginBottom: 16, letterSpacing: "-0.5px" }}>
                 {s.raw.includes("/") || s.raw.includes("#") || isNaN(parseInt(s.raw))
                   ? s.raw
                   : <CountUp target={s.raw} prefix={s.prefix}/>}
               </div>
-              <div style={{display:"flex",alignItems:"center",gap:4}}>
-                {s.dot && <div style={{position:"relative",width:8,height:8}}>
-                  <div style={{position:"absolute",inset:0,borderRadius:"50%",background:"#22c55e"}}/>
-                  {livePulse && <div className="live-dot-ring" style={{position:"absolute",inset:-3,borderRadius:"50%",border:"2px solid #22c55e"}}/>}
-                </div>}
-                <span style={{color:s.lColor,fontSize:11,cursor:"pointer",display:"flex",alignItems:"center",gap:2,fontWeight:500}}>
-                  {s.link} <ArrowUpRight size={11}/>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: "auto" }}>
+                {s.dot && <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#10b981", animation: "liveRing 2s infinite" }} />}
+                <span style={{ color: "#52525b", fontSize: 12, display: "flex", alignItems: "center", gap: 4, fontWeight: 500, transition: "color 0.2s" }}>
+                  {s.link} <ArrowUpRight size={12}/>
                 </span>
               </div>
             </div>

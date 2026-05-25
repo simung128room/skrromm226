@@ -80,7 +80,7 @@ export function PopupContainer() {
   );
 }
 
-function PopupItem({ popup }: { popup: PopupOptions }) {
+function PopupItem({ popup }: { popup: PopupOptions, key?: any }) {
    const getIcon = () => {
       switch(popup.icon) {
          case 'success': return <div style={{width: 32, height: 32, borderRadius: 10, background: 'linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.05))', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981'}}><CheckCircle2 size={18} /></div>;

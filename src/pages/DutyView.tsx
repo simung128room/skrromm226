@@ -11,12 +11,12 @@ export default function DutyView() {
       <AnimCard delay={0}>
           <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:12}}>
               <div style={{width:16,height:2,background:"#3b82f6",borderRadius:2}}/>
-              <span style={{color:"#64748b",fontSize:10,letterSpacing:2}}>ตารางเวร · 当番</span>
+              <span style={{color:"#64748b",fontSize:13,letterSpacing:1.5,fontWeight:600}}>ตารางเวร</span>
           </div>
       </AnimCard>
       
       <AnimCard delay={0.08} style={{marginBottom:16}}>
-         <div className="stat-card" style={{ background:"#fff", borderRadius:14, padding: "24px", textAlign: "center", border:"1px dashed #93c5fd", cursor:"pointer" }} onClick={() => {
+         <div className="stat-card" style={{ background:"#fff", borderRadius:14, padding: "24px", textAlign: "center", border:"1px solid #bfdbfe", cursor:"pointer" }} onClick={() => {
               if (uploaded) return;
               CustomPopup.fire({
                 title: 'อัปโหลดรูปภาพ',
@@ -59,7 +59,7 @@ export default function DutyView() {
       <AnimCard delay={0.16}>
           <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:12}}>
               <div style={{width:16,height:2,background:"#3b82f6",borderRadius:2}}/>
-              <span style={{color:"#64748b",fontSize:10,letterSpacing:2}}>ระดับความขยัน · レベル</span>
+              <span style={{color:"#64748b",fontSize:13,letterSpacing:1.5,fontWeight:600}}>ระดับความขยัน</span>
           </div>
       </AnimCard>
       
