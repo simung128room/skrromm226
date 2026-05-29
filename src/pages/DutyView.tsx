@@ -27,7 +27,7 @@ export default function DutyView() {
           />
           <span
             style={{
-              color: "#a1a1aa",
+              color: "var(--muted-foreground)",
               fontSize: 13,
               letterSpacing: 1.5,
               fontWeight: 600,
@@ -42,11 +42,11 @@ export default function DutyView() {
         <div
           className="stat-card"
           style={{
-            background: "#18181b",
+            background: "var(--card)",
             borderRadius: 14,
             padding: "24px",
             textAlign: "center",
-            border: "1px solid #27272a",
+            border: "1px solid var(--border)",
             cursor: "pointer",
           }}
           onClick={() => {
@@ -57,7 +57,7 @@ export default function DutyView() {
               icon: "question",
               showCancelButton: true,
               confirmButtonColor: "#10b981",
-              cancelButtonColor: "#3f3f46",
+              cancelButtonColor: "var(--border)",
               confirmButtonText: "ยืนยัน",
               cancelButtonText: "ยกเลิก",
             }).then((result) => {
@@ -81,10 +81,10 @@ export default function DutyView() {
                 color="#3b82f6"
                 style={{ margin: "0 auto 12px" }}
               />
-              <div style={{ fontSize: 14, fontWeight: 700, color: "#fafafa" }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--foreground)" }}>
                 คลิกเพื่ออัปโหลดรูปภาพ
               </div>
-              <div style={{ fontSize: 11, color: "#a1a1aa", marginTop: 4 }}>
+              <div style={{ fontSize: 11, color: "var(--muted-foreground)", marginTop: 4 }}>
                 รองรับไฟล์ JPG, PNG
               </div>
             </>
@@ -98,7 +98,7 @@ export default function DutyView() {
               <div style={{ fontSize: 14, fontWeight: 700, color: "#10b981" }}>
                 ส่งหลักฐานสำเร็จแล้ว!
               </div>
-              <div style={{ fontSize: 11, color: "#a1a1aa", marginTop: 4 }}>
+              <div style={{ fontSize: 11, color: "var(--muted-foreground)", marginTop: 4 }}>
                 รอแอดมินตรวจสอบเพื่อรับแต้ม
               </div>
             </>
@@ -125,7 +125,7 @@ export default function DutyView() {
           />
           <span
             style={{
-              color: "#a1a1aa",
+              color: "var(--muted-foreground)",
               fontSize: 13,
               letterSpacing: 1.5,
               fontWeight: 600,
@@ -141,9 +141,9 @@ export default function DutyView() {
           v: "V1 (มือใหม่)",
           desc: "ทำเวรครบ 1-5 ครั้ง",
           limit: "ไม่จำกัดคน",
-          bg: "#18181b",
-          color: "#a1a1aa",
-          border: "#3f3f46",
+          bg: "var(--card)",
+          color: "var(--muted-foreground)",
+          border: "var(--border)",
         },
         {
           v: "V2 (แรกเริ่ม)",
@@ -166,10 +166,10 @@ export default function DutyView() {
           <div
             className="node-row"
             style={{
-              background: "#18181b",
+              background: "var(--card)",
               borderRadius: 13,
               padding: "13px 15px",
-              border: "1px solid #27272a",
+              border: "1px solid var(--border)",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -191,7 +191,7 @@ export default function DutyView() {
               </div>
               <div>
                 <div
-                  style={{ fontSize: 12, fontWeight: 600, color: "#fafafa" }}
+                  style={{ fontSize: 12, fontWeight: 600, color: "var(--foreground)" }}
                 >
                   {lvl.desc}
                 </div>
@@ -200,7 +200,7 @@ export default function DutyView() {
             <div
               style={{
                 fontSize: 11,
-                color: "#a1a1aa",
+                color: "var(--muted-foreground)",
                 fontFamily: "'Prompt',sans-serif",
                 display: "flex",
                 alignItems: "center",

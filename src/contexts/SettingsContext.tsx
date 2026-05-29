@@ -22,7 +22,7 @@ export const SettingsSchema = z.object({
   revision: z.number().default(1),
   updatedAt: z.number().default(() => Date.now()),
   actorId: z.string().default(TelemetryContext.sessionId),
-  theme: z.enum(["dark", "light"]).default("dark"),
+  theme: z.enum(["dark", "light"]).default("light"),
   language: z.enum(["th", "en"]).default("th"),
   notifications: z.boolean().default(true),
   cloudSync: z.boolean().default(false),

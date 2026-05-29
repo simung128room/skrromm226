@@ -12,6 +12,7 @@ const Overview = React.lazy(() => import("./pages/Overview"));
 const ScheduleView = React.lazy(() => import("./pages/ScheduleView"));
 const DutyView = React.lazy(() => import("./pages/DutyView"));
 const FormsView = React.lazy(() => import("./pages/FormsView"));
+const AssignmentsView = React.lazy(() => import("./pages/AssignmentsView"));
 const AdminLogin = React.lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = React.lazy(() => import("./pages/AdminDashboard"));
 const Terms = React.lazy(() => import("./pages/Terms"));
@@ -48,14 +49,9 @@ export default function App() {
       <SettingsProvider>
         <PopupContainer />
         <Toaster
-          theme="dark"
           position="bottom-center"
           toastOptions={{
-            style: {
-              background: "#18181b",
-              border: "1px solid #27272a",
-              color: "#fafafa",
-            },
+            duration: 3000,
           }}
         />
         <Suspense
@@ -64,15 +60,15 @@ export default function App() {
               style={{
                 height: "100vh",
                 width: "100%",
-                background: "#09090b",
+                background: "var(--background)",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#fafafa",
+                color: "var(--foreground)",
               }}
             >
-              <Loader2 size={32} color="#a1a1aa" className="animate-spin" />
+              <Loader2 size={32} className="animate-spin text-muted-foreground" />
             </div>
           }
         >
@@ -85,6 +81,7 @@ export default function App() {
             <Route path="/dashboard" element={<Dashboard />}>
               <Route index element={<Overview />} />
               <Route path="schedule" element={<ScheduleView />} />
+              <Route path="assignments" element={<AssignmentsView />} />
               <Route path="duty" element={<DutyView />} />
               <Route path="forms" element={<FormsView />} />
               <Route path="settings" element={<SettingsLayout />}>

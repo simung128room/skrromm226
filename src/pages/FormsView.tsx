@@ -27,7 +27,7 @@ export default function FormsView() {
           />
           <span
             style={{
-              color: "#a1a1aa",
+              color: "var(--muted-foreground)",
               fontSize: 13,
               letterSpacing: 1.5,
               fontWeight: 600,
@@ -49,9 +49,9 @@ export default function FormsView() {
               border:
                 formType === "report"
                   ? "1px solid #2563eb"
-                  : "1px solid #27272a",
-              background: formType === "report" ? "#2563eb" : "#18181b",
-              color: formType === "report" ? "#fafafa" : "#a1a1aa",
+                  : "1px solid var(--border)",
+              background: formType === "report" ? "#2563eb" : "var(--card)",
+              color: formType === "report" ? "var(--foreground)" : "var(--muted-foreground)",
               fontWeight: 600,
               fontSize: 12,
               display: "flex",
@@ -72,9 +72,9 @@ export default function FormsView() {
               border:
                 formType === "suggest"
                   ? "1px solid #2563eb"
-                  : "1px solid #27272a",
-              background: formType === "suggest" ? "#2563eb" : "#18181b",
-              color: formType === "suggest" ? "#fafafa" : "#a1a1aa",
+                  : "1px solid var(--border)",
+              background: formType === "suggest" ? "#2563eb" : "var(--card)",
+              color: formType === "suggest" ? "var(--foreground)" : "var(--muted-foreground)",
               fontWeight: 600,
               fontSize: 12,
               display: "flex",
@@ -93,17 +93,17 @@ export default function FormsView() {
         <div
           className="stat-card"
           style={{
-            background: "#18181b",
+            background: "var(--card)",
             borderRadius: 14,
             padding: "18px 15px",
-            border: "1px solid #27272a",
+            border: "1px solid var(--border)",
           }}
         >
           <div
             style={{
               fontSize: 13,
               fontWeight: 600,
-              color: "#fafafa",
+              color: "var(--foreground)",
               marginBottom: 12,
             }}
           >
@@ -124,13 +124,13 @@ export default function FormsView() {
               width: "100%",
               padding: "12px 14px",
               borderRadius: 10,
-              border: "1px solid #3f3f46",
-              background: "#27272a",
+              border: "1px solid var(--border)",
+              background: "var(--border)",
               marginBottom: 12,
               fontSize: 13,
               fontFamily: "'Prompt', sans-serif",
               outline: "none",
-              color: "#fafafa",
+              color: "var(--foreground)",
             }}
           />
 
@@ -142,13 +142,13 @@ export default function FormsView() {
               width: "100%",
               padding: "12px 14px",
               borderRadius: 10,
-              border: "1px solid #3f3f46",
-              background: "#27272a",
+              border: "1px solid var(--border)",
+              background: "var(--border)",
               marginBottom: 16,
               fontSize: 13,
               fontFamily: "'Prompt', sans-serif",
               outline: "none",
-              color: "#fafafa",
+              color: "var(--foreground)",
               resize: "none",
             }}
           />

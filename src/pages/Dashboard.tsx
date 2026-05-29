@@ -34,6 +34,11 @@ import {
   Database,
   Trash2,
   HelpCircle,
+  Tent,
+  Gamepad2,
+  Share2,
+  Bot,
+  Library,
 } from "lucide-react";
 import { Link, useNavigate, Outlet, useLocation } from "react-router-dom";
 import {
@@ -261,11 +266,19 @@ export default function Dashboard() {
 
   const menuOverview = [
     { id: "", label: "แดชบอร์ด", Icon: LayoutDashboard },
+    { id: "assignments", label: "ส่งงาน", Icon: BookOpen },
     { id: "schedule", label: "ตารางเรียน", Icon: CalendarDays },
   ];
   const menuActivity = [
     { id: "duty", label: "ตารางเวร", Icon: Sparkles },
     { id: "forms", label: "แจ้งปัญหา", Icon: AlertTriangle },
+    { id: "leaderboard", label: "จัดอันดับ", Icon: Trophy },
+    { id: "camps", label: "กิจกรรม / ค่าย", Icon: Tent },
+  ];
+  const menuLearning = [
+    { id: "ai", label: "ผู้ช่วย AI", Icon: Bot },
+    { id: "courses", label: "คอร์สเรียน", Icon: Library },
+    { id: "shared", label: "คลังความรู้", Icon: Share2 },
   ];
 
   const getGreeting = () => {
@@ -281,12 +294,12 @@ export default function Dashboard() {
     <div
       style={{
         minHeight: "100vh",
-        color: "#fafafa",
+        color: "var(--foreground)",
         maxWidth: 430,
         margin: "0 auto",
         position: "relative",
         overflowX: "clip",
-        background: "#09090b",
+        background: "var(--background)",
       }}
     >
       <style>{`
@@ -303,12 +316,12 @@ export default function Dashboard() {
           cursor: pointer;
         }
         .stat-card:hover {
-          background: #27272a !important;
+          background: var(--border) !important;
         }
         .sidebar-item { transition: background 0.2s, color 0.2s; }
-        .sidebar-item:hover { background: #27272a !important; color: #fafafa !important; }
+        .sidebar-item:hover { background: var(--border) !important; color: var(--foreground) !important; }
         .icon-btn { transition: background 0.2s, color 0.2s; }
-        .icon-btn:hover { background: #27272a !important; color: #fafafa !important; }
+        .icon-btn:hover { background: var(--border) !important; color: var(--foreground) !important; }
       `}</style>
 
       {/* BG dot grid */}
@@ -317,7 +330,7 @@ export default function Dashboard() {
           position: "fixed",
           inset: 0,
           backgroundImage:
-            "linear-gradient(#27272a 1px, transparent 1px), linear-gradient(90deg, #27272a 1px, transparent 1px)",
+            "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
           opacity: 0.1,
           zIndex: 0,
@@ -362,11 +375,11 @@ export default function Dashboard() {
           left: 0,
           width: 280,
           height: "100%",
-          background: "#09090b",
+          background: "var(--background)",
           zIndex: 50,
           display: "flex",
           flexDirection: "column",
-          borderRight: "1px solid #27272a",
+          borderRight: "1px solid var(--border)",
           willChange: "transform",
         }}
       >
@@ -376,7 +389,7 @@ export default function Dashboard() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderBottom: "1px solid #27272a",
+            borderBottom: "1px solid var(--border)",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -384,7 +397,7 @@ export default function Dashboard() {
               style={{
                 width: 28,
                 height: 28,
-                background: "#fafafa",
+                background: "transparent",
                 borderRadius: 8,
                 display: "flex",
                 alignItems: "center",
@@ -401,7 +414,7 @@ export default function Dashboard() {
             <div>
               <div
                 style={{
-                  color: "#fafafa",
+                  color: "var(--foreground)",
                   fontWeight: 600,
                   fontSize: 15,
                   letterSpacing: "-0.5px",
@@ -410,7 +423,7 @@ export default function Dashboard() {
                 skroom226.site
               </div>
               <div
-                style={{ color: "#a1a1aa", fontSize: 10, letterSpacing: "1px" }}
+                style={{ color: "var(--muted-foreground)", fontSize: 10, letterSpacing: "1px" }}
               >
                 WORKSPACE
               </div>
@@ -421,9 +434,9 @@ export default function Dashboard() {
             className="icon-btn"
             style={{
               background: "none",
-              border: "1px solid #27272a",
+              border: "1px solid var(--border)",
               cursor: "pointer",
-              color: "#a1a1aa",
+              color: "var(--muted-foreground)",
               padding: 6,
               borderRadius: 6,
               display: "flex",
@@ -439,7 +452,7 @@ export default function Dashboard() {
           <div
             style={{
               padding: "0 8px 8px",
-              color: "#52525b",
+              color: "var(--muted-foreground)",
               fontSize: 11,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -476,11 +489,11 @@ export default function Dashboard() {
                   marginBottom: 2,
                 }}
               >
-                <Ic size={16} color={active ? "#fafafa" : "#a1a1aa"} />
+                <Ic size={16} color={active ? "var(--foreground)" : "var(--muted-foreground)"} />
                 <div
                   style={{
                     flex: 1,
-                    color: active ? "#fafafa" : "#a1a1aa",
+                    color: active ? "var(--foreground)" : "var(--muted-foreground)",
                     fontSize: 14,
                     fontWeight: active ? 500 : 400,
                   }}
@@ -494,7 +507,7 @@ export default function Dashboard() {
           <div
             style={{
               padding: "16px 8px 8px",
-              color: "#52525b",
+              color: "var(--muted-foreground)",
               fontSize: 11,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -528,11 +541,63 @@ export default function Dashboard() {
                   marginBottom: 2,
                 }}
               >
-                <Ic size={16} color={active ? "#fafafa" : "#a1a1aa"} />
+                <Ic size={16} color={active ? "var(--foreground)" : "var(--muted-foreground)"} />
                 <div
                   style={{
                     flex: 1,
-                    color: active ? "#fafafa" : "#a1a1aa",
+                    color: active ? "var(--foreground)" : "var(--muted-foreground)",
+                    fontSize: 14,
+                    fontWeight: active ? 500 : 400,
+                  }}
+                >
+                  {label}
+                </div>
+              </button>
+            );
+          })}
+
+          <div
+            style={{
+              padding: "16px 8px 8px",
+              color: "var(--muted-foreground)",
+              fontSize: 11,
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "1px",
+              marginTop: 8,
+            }}
+          >
+            การเรียนรู้ใหม่
+          </div>
+          {menuLearning.map(({ id, label, Icon: Ic }, idx) => {
+            const active = location.pathname.includes(id);
+            return (
+              <button
+                key={"m3" + idx}
+                className="sidebar-item"
+                onClick={() => {
+                  navigate(`/dashboard/${id}`);
+                  setSidebarOpen(false);
+                }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  width: "100%",
+                  padding: "10px 12px",
+                  background: active ? "#2563eb" : "transparent",
+                  border: "none",
+                  borderRadius: 8,
+                  cursor: "pointer",
+                  textAlign: "left",
+                  marginBottom: 2,
+                }}
+              >
+                <Ic size={16} color={active ? "var(--foreground)" : "var(--muted-foreground)"} />
+                <div
+                  style={{
+                    flex: 1,
+                    color: active ? "var(--foreground)" : "var(--muted-foreground)",
                     fontSize: 14,
                     fontWeight: active ? 500 : 400,
                   }}
@@ -544,7 +609,7 @@ export default function Dashboard() {
           })}
         </div>
 
-        <div style={{ padding: 16, borderTop: "1px solid #27272a" }}>
+        <div style={{ padding: 16, borderTop: "1px solid var(--border)" }}>
           <button
             className="sidebar-item"
             onClick={() => {
@@ -555,8 +620,8 @@ export default function Dashboard() {
               width: "100%",
               border: "none",
               color: location.pathname.includes("/settings")
-                ? "#fafafa"
-                : "#a1a1aa",
+                ? "var(--foreground)"
+                : "var(--muted-foreground)",
               background: location.pathname.includes("/settings")
                 ? "rgba(255,255,255,0.05)"
                 : "transparent",
@@ -584,7 +649,7 @@ export default function Dashboard() {
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#ef4444",
-                cancelButtonColor: "#27272a",
+                cancelButtonColor: "var(--border)",
                 confirmButtonText: "ออกจากระบบ",
                 cancelButtonText: "ยกเลิก",
               }).then((result) => {
@@ -596,8 +661,8 @@ export default function Dashboard() {
             }}
             style={{
               width: "100%",
-              border: "1px solid #27272a",
-              color: "#fafafa",
+              border: "1px solid var(--border)",
+              color: "var(--foreground)",
               background: "transparent",
               borderRadius: 8,
               padding: "10px 12px",
@@ -631,15 +696,15 @@ export default function Dashboard() {
         >
           <nav
             style={{
-              background: "rgba(24, 24, 27, 0.7)",
+              background: "color-mix(in srgb, var(--background) 80%, transparent)",
               backdropFilter: "blur(12px)",
               padding: "12px 16px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              border: "1px solid #3f3f46",
+              border: "1px solid var(--border)",
               borderRadius: 20,
-              boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -647,7 +712,7 @@ export default function Dashboard() {
                 style={{
                   width: 24,
                   height: 24,
-                  background: "#fafafa",
+                  background: "transparent",
                   borderRadius: 6,
                   display: "flex",
                   alignItems: "center",
@@ -663,7 +728,7 @@ export default function Dashboard() {
               </div>
               <span
                 style={{
-                  color: "#fafafa",
+                  color: "var(--foreground)",
                   fontWeight: 600,
                   fontSize: 14,
                   letterSpacing: "-0.5px",
@@ -681,7 +746,7 @@ export default function Dashboard() {
                   background: "none",
                   border: "none",
                   cursor: "pointer",
-                  color: "#a1a1aa",
+                  color: "var(--muted-foreground)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -697,7 +762,7 @@ export default function Dashboard() {
                   background: "none",
                   border: "none",
                   cursor: "pointer",
-                  color: "#a1a1aa",
+                  color: "var(--muted-foreground)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -722,7 +787,7 @@ export default function Dashboard() {
               style={{
                 position: "fixed",
                 inset: 0,
-                background: "rgba(9, 9, 11, 0.8)",
+                background: "color-mix(in srgb, var(--background) 80%, transparent)",
                 backdropFilter: "blur(8px)",
                 zIndex: 100,
                 display: "flex",
@@ -743,7 +808,7 @@ export default function Dashboard() {
                 <div style={{ flex: 1, position: "relative" }}>
                   <Search
                     size={16}
-                    color="#71717a"
+                    color="var(--muted-foreground)"
                     style={{
                       position: "absolute",
                       left: 12,
@@ -759,12 +824,12 @@ export default function Dashboard() {
                     autoFocus
                     style={{
                       width: "100%",
-                      background: "#18181b",
-                      border: "1px solid #27272a",
+                      background: "var(--card)",
+                      border: "1px solid var(--border)",
                       borderRadius: 8,
                       padding: "10px 12px 10px 36px",
                       fontSize: 14,
-                      color: "#fafafa",
+                      color: "var(--foreground)",
                       outline: "none",
                       fontFamily: "'Prompt', sans-serif",
                     }}
@@ -779,7 +844,7 @@ export default function Dashboard() {
                         transform: "translateY(-50%)",
                         background: "none",
                         border: "none",
-                        color: "#a1a1aa",
+                        color: "var(--muted-foreground)",
                         cursor: "pointer",
                         padding: 0,
                       }}
@@ -797,7 +862,7 @@ export default function Dashboard() {
                   style={{
                     background: "transparent",
                     border: "none",
-                    color: "#fafafa",
+                    color: "var(--foreground)",
                     fontSize: 13,
                     padding: "10px 8px",
                     cursor: "pointer",
@@ -822,11 +887,11 @@ export default function Dashboard() {
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     style={{
-                      background: "#18181b",
-                      border: "1px solid #27272a",
+                      background: "var(--card)",
+                      border: "1px solid var(--border)",
                       borderRadius: 12,
                       padding: 20,
-                      color: "#fafafa",
+                      color: "var(--foreground)",
                     }}
                   >
                     <div
@@ -841,8 +906,8 @@ export default function Dashboard() {
                         <span
                           style={{
                             fontSize: 11,
-                            background: "#27272a",
-                            color: "#fafafa",
+                            background: "var(--border)",
+                            color: "var(--foreground)",
                             padding: "2px 8px",
                             borderRadius: 12,
                             fontWeight: 600,
@@ -855,7 +920,7 @@ export default function Dashboard() {
                             fontSize: 18,
                             fontWeight: 600,
                             marginTop: 8,
-                            color: "#fafafa",
+                            color: "var(--foreground)",
                           }}
                         >
                           {selectedSearchStudent.name}
@@ -863,7 +928,7 @@ export default function Dashboard() {
                         <p
                           style={{
                             fontSize: 12,
-                            color: "#a1a1aa",
+                            color: "var(--muted-foreground)",
                             marginTop: 2,
                           }}
                         >
@@ -893,7 +958,7 @@ export default function Dashboard() {
                               style={{
                                 fontSize: 10,
                                 fontWeight: 600,
-                                color: "#a1a1aa",
+                                color: "var(--muted-foreground)",
                               }}
                             >
                               {rank.toUpperCase()}
@@ -906,7 +971,7 @@ export default function Dashboard() {
                     <div
                       style={{
                         height: 1,
-                        background: "#27272a",
+                        background: "var(--border)",
                         margin: "14px 0",
                       }}
                     />
@@ -936,8 +1001,8 @@ export default function Dashboard() {
                               fontSize: 13,
                             }}
                           >
-                            <span style={{ color: "#a1a1aa" }}>Points:</span>
-                            <span style={{ fontWeight: 600, color: "#fafafa" }}>
+                            <span style={{ color: "var(--muted-foreground)" }}>Points:</span>
+                            <span style={{ fontWeight: 600, color: "var(--foreground)" }}>
                               {points} PT
                             </span>
                           </div>
@@ -948,8 +1013,8 @@ export default function Dashboard() {
                               fontSize: 13,
                             }}
                           >
-                            <span style={{ color: "#a1a1aa" }}>Streak:</span>
-                            <span style={{ fontWeight: 600, color: "#fafafa" }}>
+                            <span style={{ color: "var(--muted-foreground)" }}>Streak:</span>
+                            <span style={{ fontWeight: 600, color: "var(--foreground)" }}>
                               {streak} Days
                             </span>
                           </div>
@@ -960,8 +1025,8 @@ export default function Dashboard() {
                               fontSize: 13,
                             }}
                           >
-                            <span style={{ color: "#a1a1aa" }}>Class:</span>
-                            <span style={{ fontWeight: 600, color: "#fafafa" }}>
+                            <span style={{ color: "var(--muted-foreground)" }}>Class:</span>
+                            <span style={{ fontWeight: 600, color: "var(--foreground)" }}>
                               M.2/6
                             </span>
                           </div>
@@ -973,9 +1038,9 @@ export default function Dashboard() {
                       onClick={() => setSelectedSearchStudent(null)}
                       style={{
                         width: "100%",
-                        background: "#27272a",
-                        color: "#fafafa",
-                        border: "1px solid #3f3f46",
+                        background: "var(--border)",
+                        color: "var(--foreground)",
+                        border: "1px solid var(--border)",
                         padding: "10px 0",
                         borderRadius: 8,
                         marginTop: 24,
@@ -993,7 +1058,7 @@ export default function Dashboard() {
                     style={{
                       padding: "40px 20px",
                       textAlign: "center",
-                      color: "#52525b",
+                      color: "var(--muted-foreground)",
                       fontSize: 13,
                       display: "flex",
                       flexDirection: "column",
@@ -1001,7 +1066,7 @@ export default function Dashboard() {
                       gap: 10,
                     }}
                   >
-                    <Search size={24} color="#52525b" strokeWidth={2} />
+                    <Search size={24} color="var(--muted-foreground)" strokeWidth={2} />
                     <span>Enter search query</span>
                   </div>
                 ) : filteredStudents.length === 0 ? (
@@ -1009,7 +1074,7 @@ export default function Dashboard() {
                     style={{
                       padding: "40px 20px",
                       textAlign: "center",
-                      color: "#52525b",
+                      color: "var(--muted-foreground)",
                       fontSize: 13,
                       display: "flex",
                       flexDirection: "column",
@@ -1017,7 +1082,7 @@ export default function Dashboard() {
                       gap: 10,
                     }}
                   >
-                    <AlertTriangle size={24} color="#52525b" strokeWidth={2} />
+                    <AlertTriangle size={24} color="var(--muted-foreground)" strokeWidth={2} />
                     <span>No students found for "{searchQuery}"</span>
                   </div>
                 ) : (
@@ -1027,7 +1092,7 @@ export default function Dashboard() {
                     <span
                       style={{
                         fontSize: 11,
-                        color: "#71717a",
+                        color: "var(--muted-foreground)",
                         fontWeight: 600,
                         paddingLeft: 4,
                       }}
@@ -1048,12 +1113,12 @@ export default function Dashboard() {
                       return (
                         <motion.div
                           key={st.id}
-                          whileHover={{ scale: 1.01, background: "#27272a" }}
+                          whileHover={{ scale: 1.01, background: "var(--border)" }}
                           whileTap={{ scale: 0.99 }}
                           onClick={() => setSelectedSearchStudent(st)}
                           style={{
-                            background: "#18181b",
-                            border: "1px solid #27272a",
+                            background: "var(--card)",
+                            border: "1px solid var(--border)",
                             borderRadius: 8,
                             padding: 12,
                             display: "flex",
@@ -1072,8 +1137,8 @@ export default function Dashboard() {
                             <span
                               style={{
                                 fontSize: 11,
-                                background: "#27272a",
-                                color: "#a1a1aa",
+                                background: "var(--border)",
+                                color: "var(--muted-foreground)",
                                 padding: "2px 6px",
                                 borderRadius: 4,
                                 width: 20,
@@ -1088,12 +1153,12 @@ export default function Dashboard() {
                                 style={{
                                   fontSize: 13,
                                   fontWeight: 600,
-                                  color: "#fafafa",
+                                  color: "var(--foreground)",
                                 }}
                               >
                                 {st.name}
                               </div>
-                              <div style={{ fontSize: 11, color: "#a1a1aa" }}>
+                              <div style={{ fontSize: 11, color: "var(--muted-foreground)" }}>
                                 {st.id}
                               </div>
                             </div>
@@ -1108,7 +1173,7 @@ export default function Dashboard() {
                             <span
                               style={{
                                 fontSize: 11,
-                                color: "#fafafa",
+                                color: "var(--foreground)",
                                 fontWeight: 600,
                               }}
                             >
@@ -1127,70 +1192,72 @@ export default function Dashboard() {
         </AnimatePresence>
 
         {/* Hero */}
-        <div
-          style={{
-            background: "#09090b",
-            padding: "32px 20px",
-            borderBottom: "1px solid #27272a",
-          }}
-        >
-          <AnimCard delay={0.1}>
-            <h1
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                flexWrap: "wrap",
-                gap: "8px",
-                margin: 0,
-                letterSpacing: "-0.5px",
-              }}
-            >
-              <span style={{ color: "#a1a1aa", fontSize: 24, fontWeight: 500 }}>
-                {getGreeting()},
-              </span>
-              <div
+        {(location.pathname === "/dashboard" || location.pathname === "/dashboard/") && (
+          <div
+            style={{
+              background: "var(--background)",
+              padding: "32px 20px",
+              borderBottom: "1px solid var(--border)",
+            }}
+          >
+            <AnimCard delay={0.1}>
+              <h1
                 style={{
-                  position: "relative",
-                  display: "inline-block",
-                  fontSize: 24,
-                  fontWeight: 600,
+                  display: "flex",
+                  alignItems: "baseline",
+                  flexWrap: "wrap",
+                  gap: "8px",
+                  margin: 0,
+                  letterSpacing: "-0.5px",
                 }}
               >
-                <span
-                  style={{
-                    background: "linear-gradient(90deg, #3b82f6, #a855f7)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  {tName}
+                <span style={{ color: "var(--muted-foreground)", fontSize: 24, fontWeight: 500 }}>
+                  {getGreeting()},
                 </span>
                 <div
                   style={{
-                    position: "absolute",
-                    bottom: -2,
-                    left: 0,
-                    width: "100%",
-                    height: 2,
-                    background: "#27272a",
-                    overflow: "hidden",
-                    borderRadius: 2,
+                    position: "relative",
+                    display: "inline-block",
+                    fontSize: 24,
+                    fontWeight: 600,
                   }}
                 >
+                  <span
+                    style={{
+                      background: "linear-gradient(90deg, #3b82f6, #a855f7)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    {tName}
+                  </span>
                   <div
                     style={{
+                      position: "absolute",
+                      bottom: -2,
+                      left: 0,
                       width: "100%",
-                      height: "100%",
-                      background:
-                        "linear-gradient(90deg, transparent, #3b82f6, transparent)",
-                      animation: "flowX 2s linear infinite",
+                      height: 2,
+                      background: "var(--border)",
+                      overflow: "hidden",
+                      borderRadius: 2,
                     }}
-                  />
+                  >
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        background:
+                          "linear-gradient(90deg, transparent, #3b82f6, transparent)",
+                        animation: "flowX 2s linear infinite",
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            </h1>
-          </AnimCard>
-        </div>
+              </h1>
+            </AnimCard>
+          </div>
+        )}
 
         <div style={{ height: 16 }} />
 
@@ -1201,7 +1268,7 @@ export default function Dashboard() {
           style={{
             textAlign: "center",
             padding: "32px 0",
-            color: "#a1a1aa",
+            color: "var(--muted-foreground)",
             fontSize: 11,
             letterSpacing: "1px",
           }}

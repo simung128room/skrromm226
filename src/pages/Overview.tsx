@@ -11,7 +11,14 @@ import {
   Clock,
   MapPin,
   Bell,
+  UploadCloud,
+  Bot,
+  Tent,
+  Gamepad2,
+  Share2,
+  Library,
 } from "lucide-react";
+import { CustomPopup } from "../components/Popup";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { SCHEDULE, DAYS, C } from "../data";
 
@@ -54,7 +61,7 @@ export default function Overview() {
       suffix: "",
       link: "ดูอันดับทั้งหมดในห้องเรียน",
       target: "/dashboard/leaderboard",
-      lColor: "#fafafa",
+      lColor: "var(--foreground)",
       Icon: Trophy,
     },
   ];
@@ -84,6 +91,166 @@ export default function Overview() {
       <AnimCard delay={0}>
         <div
           style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 10,
+            marginBottom: 20,
+          }}
+        >
+          <button
+            onClick={() => navigate("/dashboard/assignments")}
+            style={{
+              background: "var(--primary)",
+              color: "var(--primary-foreground)",
+              border: "none",
+              borderRadius: 14,
+              padding: "16px 12px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 10,
+              cursor: "pointer",
+              boxShadow: "0 4px 14px rgba(0,0,0,0.1)",
+            }}
+          >
+            <div
+              style={{
+                background: "rgba(255,255,255,0.2)",
+                padding: 8,
+                borderRadius: "50%",
+              }}
+            >
+              <UploadCloud size={20} />
+            </div>
+            <span style={{ fontWeight: 600, fontSize: 14 }}>ส่งงาน</span>
+          </button>
+
+          <button
+            onClick={() => navigate("/dashboard/schedule")}
+            style={{
+              background: "var(--card)",
+              color: "var(--foreground)",
+              border: "1px solid var(--border)",
+              borderRadius: 14,
+              padding: "16px 12px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 10,
+              cursor: "pointer",
+            }}
+          >
+            <div
+              style={{
+                background: "var(--muted)",
+                padding: 8,
+                borderRadius: "50%",
+              }}
+            >
+              <CalendarDays size={20} className="text-muted-foreground" />
+            </div>
+            <span style={{ fontWeight: 600, fontSize: 14 }}>ตารางเรียน</span>
+          </button>
+        </div>
+      </AnimCard>
+
+      <AnimCard delay={0.05}>
+        <div style={{ marginBottom: 24 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              marginBottom: 12,
+            }}
+          >
+            <div
+              style={{
+                width: 12,
+                height: 2,
+                background: "var(--foreground)",
+                borderRadius: 2,
+              }}
+            />
+            <span
+              style={{
+                color: "var(--muted-foreground)",
+                fontSize: 11,
+                letterSpacing: "1px",
+                fontWeight: 600,
+                textTransform: "uppercase",
+              }}
+            >
+              บริการต่างๆ (เร็วๆนี้)
+            </span>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: 12,
+            }}
+          >
+            {[
+              { id: "ai", label: "AI", Icon: Bot },
+              { id: "camps", label: "ค่าย", Icon: Tent },
+              { id: "games", label: "กิจกรรม", Icon: Gamepad2 },
+              { id: "shared", label: "เฉลยงาน", Icon: Share2 },
+              { id: "courses", label: "เรียน", Icon: Library },
+            ].map((app, i) => (
+              <button
+                key={i}
+                onClick={() =>
+                  CustomPopup.fire({
+                    icon: "info",
+                    title: "อยู่ระหว่างการพัฒนา",
+                    text: `ระบบ ${app.label} จะเปิดให้บริการเร็วๆนี้`,
+                  })
+                }
+                style={{
+                  background: "var(--card)",
+                  border: "1px solid var(--border)",
+                  borderRadius: 12,
+                  padding: "12px 4px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 8,
+                  cursor: "pointer",
+                }}
+                className="hover:bg-muted/50 transition-colors"
+              >
+                <div
+                  style={{
+                    background: "var(--background)",
+                    padding: 8,
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <app.Icon size={20} className="text-primary" />
+                </div>
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 500,
+                    color: "var(--foreground)",
+                    textAlign: "center",
+                  }}
+                >
+                  {app.label}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </AnimCard>
+
+      <AnimCard delay={0.1}>
+        <div
+          style={{
             display: "flex",
             alignItems: "center",
             gap: 8,
@@ -94,13 +261,13 @@ export default function Overview() {
             style={{
               width: 12,
               height: 2,
-              background: "#fafafa",
+              background: "var(--foreground)",
               borderRadius: 2,
             }}
           />
           <span
             style={{
-              color: "#a1a1aa",
+              color: "var(--muted-foreground)",
               fontSize: 11,
               letterSpacing: "1px",
               fontWeight: 600,
@@ -126,10 +293,10 @@ export default function Overview() {
               className="stat-card"
               onClick={() => navigate(s.target)}
               style={{
-                background: "#18181b",
+                background: "var(--card)",
                 borderRadius: 12,
-                padding: 16,
-                border: "1px solid #27272a",
+                padding: "12px 14px",
+                border: "1px solid var(--border)",
                 position: "relative",
                 overflow: "hidden",
                 cursor: "pointer",
@@ -146,7 +313,11 @@ export default function Overview() {
                 }}
               >
                 <div
-                  style={{ color: "#a1a1aa", fontSize: 13, fontWeight: 500 }}
+                  style={{
+                    color: "var(--muted-foreground)",
+                    fontSize: 13,
+                    fontWeight: 500,
+                  }}
                 >
                   {s.label}
                 </div>
@@ -155,8 +326,8 @@ export default function Overview() {
                     width: 28,
                     height: 28,
                     borderRadius: 6,
-                    background: "#09090b",
-                    border: "1px solid #27272a",
+                    background: "var(--background)",
+                    border: "1px solid var(--border)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -174,7 +345,7 @@ export default function Overview() {
                       ? 20
                       : 24,
                   fontWeight: 600,
-                  color: "#fafafa",
+                  color: "var(--foreground)",
                   lineHeight: 1,
                   marginBottom: 16,
                   letterSpacing: "-0.5px",
@@ -202,7 +373,7 @@ export default function Overview() {
               >
                 <span
                   style={{
-                    color: "#a1a1aa",
+                    color: "var(--muted-foreground)",
                     fontSize: 13,
                     display: "flex",
                     alignItems: "center",
@@ -234,13 +405,13 @@ export default function Overview() {
               style={{
                 width: 12,
                 height: 2,
-                background: "#fafafa",
+                background: "var(--foreground)",
                 borderRadius: 2,
               }}
             />
             <span
               style={{
-                color: "#a1a1aa",
+                color: "var(--muted-foreground)",
                 fontSize: 11,
                 letterSpacing: "1px",
                 fontWeight: 600,
@@ -284,10 +455,10 @@ export default function Overview() {
                   display: "flex",
                   alignItems: "center",
                   gap: 12,
-                  background: "#18181b",
+                  background: "var(--card)",
                   padding: 12,
                   borderRadius: 12,
-                  border: "1px solid #27272a",
+                  border: "1px solid var(--border)",
                 }}
               >
                 <div
@@ -303,7 +474,7 @@ export default function Overview() {
                     style={{
                       fontSize: 14,
                       fontWeight: 600,
-                      color: "#fafafa",
+                      color: "var(--foreground)",
                       marginBottom: 2,
                     }}
                   >
@@ -315,7 +486,7 @@ export default function Overview() {
                       alignItems: "center",
                       gap: 12,
                       fontSize: 11,
-                      color: "#a1a1aa",
+                      color: "var(--muted-foreground)",
                     }}
                   >
                     <span
@@ -338,12 +509,12 @@ export default function Overview() {
                 </div>
                 <div
                   style={{
-                    background: "#09090b",
-                    border: "1px solid #27272a",
+                    background: "var(--background)",
+                    border: "1px solid var(--border)",
                     padding: "6px 10px",
                     borderRadius: 8,
                     fontSize: 11,
-                    color: "#fafafa",
+                    color: "var(--foreground)",
                     fontWeight: 500,
                   }}
                 >
@@ -356,11 +527,11 @@ export default function Overview() {
               style={{
                 textAlign: "center",
                 padding: "24px 0",
-                color: "#a1a1aa",
+                color: "var(--muted-foreground)",
                 fontSize: 13,
-                background: "#18181b",
+                background: "var(--card)",
                 borderRadius: 12,
-                border: "1px solid #27272a",
+                border: "1px solid var(--border)",
               }}
             >
               No classes scheduled for today.
@@ -383,13 +554,13 @@ export default function Overview() {
             style={{
               width: 12,
               height: 2,
-              background: "#fafafa",
+              background: "var(--foreground)",
               borderRadius: 2,
             }}
           />
           <span
             style={{
-              color: "#a1a1aa",
+              color: "var(--muted-foreground)",
               fontSize: 11,
               letterSpacing: "1px",
               fontWeight: 600,
@@ -405,8 +576,8 @@ export default function Overview() {
             <div
               key={ann.id}
               style={{
-                background: "#18181b",
-                border: "1px solid #27272a",
+                background: "var(--card)",
+                border: "1px solid var(--border)",
                 borderRadius: 12,
                 padding: 16,
                 display: "flex",
@@ -419,8 +590,8 @@ export default function Overview() {
                   width: 32,
                   height: 32,
                   borderRadius: 8,
-                  background: "#09090b",
-                  border: "1px solid #27272a",
+                  background: "var(--background)",
+                  border: "1px solid var(--border)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -452,7 +623,9 @@ export default function Overview() {
                   >
                     {ann.tag}
                   </span>
-                  <span style={{ fontSize: 11, color: "#71717a" }}>
+                  <span
+                    style={{ fontSize: 11, color: "var(--muted-foreground)" }}
+                  >
                     {ann.date}
                   </span>
                 </div>
@@ -460,7 +633,7 @@ export default function Overview() {
                   style={{
                     fontSize: 14,
                     fontWeight: 500,
-                    color: "#fafafa",
+                    color: "var(--foreground)",
                     lineHeight: 1.4,
                   }}
                 >

@@ -98,8 +98,8 @@ export default function AdminDashboard() {
     <div
       style={{
         minHeight: "100vh",
-        background: "#09090b",
-        color: "#fafafa",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "'Prompt', sans-serif",
         padding: "32px 24px",
       }}
@@ -126,7 +126,7 @@ export default function AdminDashboard() {
             >
               System Management
             </h1>
-            <p style={{ color: "#a1a1aa", fontSize: 13, margin: 0 }}>
+            <p style={{ color: "var(--muted-foreground)", fontSize: 13, margin: 0 }}>
               Administrator Dashboard
             </p>
           </div>
@@ -140,8 +140,8 @@ export default function AdminDashboard() {
               alignItems: "center",
               gap: 8,
               background: "transparent",
-              color: "#a1a1aa",
-              border: "1px solid #27272a",
+              color: "var(--muted-foreground)",
+              border: "1px solid var(--border)",
               padding: "8px 16px",
               borderRadius: 8,
               fontSize: 13,
@@ -149,12 +149,12 @@ export default function AdminDashboard() {
               transition: "background 0.2s, color 0.2s",
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.background = "#18181b";
-              e.currentTarget.style.color = "#fafafa";
+              e.currentTarget.style.background = "var(--card)";
+              e.currentTarget.style.color = "var(--foreground)";
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#a1a1aa";
+              e.currentTarget.style.color = "var(--muted-foreground)";
             }}
           >
             <ArrowLeft size={14} /> Sign Out
@@ -173,8 +173,8 @@ export default function AdminDashboard() {
             <AnimCard key={idx} delay={idx * 0.1}>
               <div
                 style={{
-                  background: "#18181b",
-                  border: "1px solid #27272a",
+                  background: "var(--card)",
+                  border: "1px solid var(--border)",
                   padding: 24,
                   borderRadius: 12,
                   display: "flex",
@@ -185,10 +185,10 @@ export default function AdminDashboard() {
                   transition: "border-color 0.2s, background 0.2s",
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.background = "#27272a";
+                  e.currentTarget.style.background = "var(--border)";
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.background = "#18181b";
+                  e.currentTarget.style.background = "var(--card)";
                 }}
               >
                 <div
@@ -196,9 +196,9 @@ export default function AdminDashboard() {
                     width: 48,
                     height: 48,
                     borderRadius: 8,
-                    background: "#09090b",
-                    border: "1px solid #27272a",
-                    color: "#fafafa",
+                    background: "var(--background)",
+                    border: "1px solid var(--border)",
+                    color: "var(--foreground)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -207,7 +207,7 @@ export default function AdminDashboard() {
                   <item.icon size={20} />
                 </div>
                 <div
-                  style={{ fontSize: 14, fontWeight: 500, color: "#fafafa" }}
+                  style={{ fontSize: 14, fontWeight: 500, color: "var(--foreground)" }}
                 >
                   {item.label}
                 </div>
@@ -225,16 +225,16 @@ export default function AdminDashboard() {
               display: "flex",
               alignItems: "center",
               gap: 8,
-              color: "#fafafa",
+              color: "var(--foreground)",
             }}
           >
-            <Volume2 size={16} color="#a1a1aa" /> Login Audio Settings
+            <Volume2 size={16} color="var(--muted-foreground)" /> Login Audio Settings
           </h2>
           <AnimCard delay={0.4}>
             <div
               style={{
-                background: "#18181b",
-                border: "1px solid #27272a",
+                background: "var(--card)",
+                border: "1px solid var(--border)",
                 padding: 24,
                 borderRadius: 12,
                 display: "flex",
@@ -242,7 +242,7 @@ export default function AdminDashboard() {
                 gap: 16,
               }}
             >
-              <p style={{ color: "#a1a1aa", fontSize: 13, margin: 0 }}>
+              <p style={{ color: "var(--muted-foreground)", fontSize: 13, margin: 0 }}>
                 Upload an audio file (.mp3, .wav) to play when a user clicks
                 "Sign In". Maximum 2MB.
               </p>
@@ -268,8 +268,8 @@ export default function AdminDashboard() {
                     display: "flex",
                     alignItems: "center",
                     gap: 8,
-                    background: "#fafafa",
-                    color: "#09090b",
+                    background: "var(--foreground)",
+                    color: "var(--background)",
                     border: "none",
                     padding: "10px 16px",
                     borderRadius: 8,
@@ -292,8 +292,8 @@ export default function AdminDashboard() {
                       alignItems: "center",
                       gap: 8,
                       background: "transparent",
-                      color: "#fafafa",
-                      border: "1px solid #27272a",
+                      color: "var(--foreground)",
+                      border: "1px solid var(--border)",
                       padding: "10px 16px",
                       borderRadius: 8,
                       fontSize: 13,
@@ -302,7 +302,7 @@ export default function AdminDashboard() {
                       transition: "background 0.2s",
                     }}
                     onMouseOver={(e) =>
-                      (e.currentTarget.style.background = "#27272a")
+                      (e.currentTarget.style.background = "var(--border)")
                     }
                     onMouseOut={(e) =>
                       (e.currentTarget.style.background = "transparent")

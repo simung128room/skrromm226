@@ -50,9 +50,9 @@ export default function ScheduleView() {
               padding: "8px 18px",
               borderRadius: 20,
               border:
-                idx === selectedDay ? "1px solid #2563eb" : "1px solid #27272a",
-              background: idx === selectedDay ? "#2563eb" : "#18181b",
-              color: idx === selectedDay ? "#fafafa" : "#a1a1aa",
+                idx === selectedDay ? "1px solid #2563eb" : "1px solid var(--border)",
+              background: idx === selectedDay ? "#2563eb" : "var(--card)",
+              color: idx === selectedDay ? "var(--foreground)" : "var(--muted-foreground)",
               cursor: "pointer",
               whiteSpace: "nowrap",
               fontFamily: "'Prompt', sans-serif",
@@ -76,7 +76,7 @@ export default function ScheduleView() {
                   style={{
                     width: 60,
                     textAlign: "right",
-                    color: "#71717a",
+                    color: "var(--muted-foreground)",
                     fontSize: 11,
                     display: "flex",
                     flexDirection: "column",
@@ -90,18 +90,18 @@ export default function ScheduleView() {
                   className="node-row"
                   style={{
                     flex: 1,
-                    background: "#18181b",
+                    background: "var(--card)",
                     borderRadius: 13,
                     padding: "14px",
-                    border: "1px solid #27272a",
+                    border: "1px solid var(--border)",
                     display: "flex",
                     alignItems: "center",
                     gap: 8,
                   }}
                 >
-                  <Coffee size={14} color="#71717a" />
+                  <Coffee size={14} color="var(--muted-foreground)" />
                   <span
-                    style={{ color: "#a1a1aa", fontSize: 13, fontWeight: 500 }}
+                    style={{ color: "var(--muted-foreground)", fontSize: 13, fontWeight: 500 }}
                   >
                     พักรับประทานอาหารกลางวัน
                   </span>
@@ -122,7 +122,7 @@ export default function ScheduleView() {
                 style={{
                   width: 60,
                   textAlign: "right",
-                  color: isActive ? "#60a5fa" : "#a1a1aa",
+                  color: isActive ? "#60a5fa" : "var(--muted-foreground)",
                   fontSize: 11,
                   display: "flex",
                   flexDirection: "column",
@@ -138,13 +138,13 @@ export default function ScheduleView() {
                 className="node-row"
                 style={{
                   flex: 1,
-                  background: "#18181b",
+                  background: "var(--card)",
                   borderRadius: 13,
                   padding: "14px",
                   borderLeft: `4px solid ${item.color}`,
-                  borderTop: "1px solid #27272a",
-                  borderRight: "1px solid #27272a",
-                  borderBottom: "1px solid #27272a",
+                  borderTop: "1px solid var(--border)",
+                  borderRight: "1px solid var(--border)",
+                  borderBottom: "1px solid var(--border)",
                   boxShadow: isActive
                     ? "0 4px 14px rgba(59,130,246,0.1)"
                     : "none",
@@ -175,7 +175,7 @@ export default function ScheduleView() {
                   }}
                 >
                   <span
-                    style={{ color: "#fafafa", fontSize: 14, fontWeight: 600 }}
+                    style={{ color: "var(--foreground)", fontSize: 14, fontWeight: 600 }}
                   >
                     {item.name}
                   </span>
@@ -197,7 +197,7 @@ export default function ScheduleView() {
                     display: "flex",
                     flexWrap: "wrap",
                     gap: 12,
-                    color: "#a1a1aa",
+                    color: "var(--muted-foreground)",
                     fontSize: 11,
                     marginTop: 6,
                     fontWeight: 500,
@@ -206,13 +206,13 @@ export default function ScheduleView() {
                   <span
                     style={{ display: "flex", alignItems: "center", gap: 6 }}
                   >
-                    <Users size={12} color="#71717a" /> {item.teacher}
+                    <Users size={12} color="var(--muted-foreground)" /> {item.teacher}
                   </span>
                   {item.room && (
                     <span
                       style={{ display: "flex", alignItems: "center", gap: 6 }}
                     >
-                      <MapPin size={12} color="#71717a" /> ห้อง {item.room}
+                      <MapPin size={12} color="var(--muted-foreground)" /> ห้อง {item.room}
                     </span>
                   )}
                 </div>
