@@ -1,4 +1,10 @@
-export type RankCategory = 'Bronze' | 'Silver' | 'Crystal' | 'Elite' | 'Master' | 'Legend';
+export type RankCategory =
+  | "Bronze"
+  | "Silver"
+  | "Crystal"
+  | "Elite"
+  | "Master"
+  | "Legend";
 
 export interface Student {
   id: string;
@@ -6,8 +12,8 @@ export interface Student {
   name: string;
   points: number;
   rank: RankCategory;
-  role: 'Student' | 'Leader' | 'Deputy' | 'Teacher';
+  role: "Student" | "Leader" | "Deputy" | "Teacher";
   streak: number;
 }
 
-export type ActiveTab = 'dashboard' | 'duty' | 'leaderboard' | 'forms';
+export type ActiveTab = "dashboard" | "duty" | "leaderboard" | "forms";
